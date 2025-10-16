@@ -16,10 +16,57 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            flavor = "tap-preferred";
+            tapping-term-ms = <130>;
+            flavor = "balanced";
             hold-trigger-on-release;
+        };
+
+        hmr_layer: hmr_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR_LAYER";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <130>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+        };
+    };
+
+    macros {
+        e_grave: e_grave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(GRAVE) &kp E>;
+            label = "E_GRAVE";
+        };
+
+        e_aigue: e_aigue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(SQT) &kp E>;
+            label = "E_AIGUE";
+        };
+
+        e_chap: e_chap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(LS(NUMBER_6)) &kp E>;
+            label = "E_CHAP";
+        };
+
+        a_grave: a_grave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(GRAVE) &kp A>;
+            label = "A_GRAVE";
+        };
+
+        c_cedille: c_cedille {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(COMMA) &kp C>;
+            label = "C_CEDILLE";
         };
     };
 
@@ -36,14 +83,12 @@
 
             display-name = "Base";
             bindings = <
-&kp ESC         &kp N1        &kp N2           &kp N3            &kp N4             &kp N5                                &kp N6     &kp N7              &kp N8             &kp N9            &kp N0                &kp MINUS
-&kp TAB         &kp Q         &kp W            &kp E             &kp R              &kp T                                 &kp Y      &kp U               &kp I              &kp O             &kp P                 &kp EQUAL
-&kp UNDERSCORE  &HMR RCTRL A  &HMR LEFT_ALT S  &HMR LEFT_META D  &HMR LEFT_SHIFT F  &kp G                                 &kp H      &HMR RIGHT_SHIFT J  &HMR RIGHT_META K  &HMR RIGHT_ALT L  &HMR RCTRL SEMICOLON  &kp SQT
-&kp LSHFT       &kp Z         &kp X            &kp C             &kp V              &kp B      &kp LBKT         &kp RBKT  &kp N      &kp M               &kp COMMA          &kp DOT           &kp FSLH              &kp DOUBLE_QUOTES
-                                               &bt BT_CLR        &bt BT_SEL 0       &kp SPACE  &kp BACKSPACE    &mo 1     &kp ENTER  &none               &none
+&kp ESC                  &kp N1        &kp N2           &kp N3            &kp N4             &kp N5                                &kp N6     &kp N7              &kp N8             &kp N9            &kp N0                &kp MINUS
+&kp TAB                  &kp Q         &kp W            &kp E             &kp R              &kp T                                 &kp Y      &kp U               &kp I              &kp O             &kp P                 &kp EQUAL
+&hmr_layer 2 UNDERSCORE  &HMR RCTRL A  &HMR LEFT_ALT S  &HMR LEFT_META D  &HMR LEFT_SHIFT F  &kp G                                 &kp H      &HMR RIGHT_SHIFT J  &HMR RIGHT_META K  &HMR RIGHT_ALT L  &HMR RCTRL SEMICOLON  &kp SQT
+&kp LSHFT                &kp Z         &kp X            &kp C             &kp V              &kp B      &kp LBKT         &kp RBKT  &kp N      &kp M               &kp COMMA          &kp DOT           &kp FSLH              &kp DOUBLE_QUOTES
+                                                        &bt BT_CLR        &bt BT_SEL 0       &kp SPACE  &kp BACKSPACE    &mo 1     &kp ENTER  &trans              &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         prog {
@@ -76,11 +121,11 @@
 
             display-name = "Raise";
             bindings = <
-&trans     &trans  &trans  &trans   &trans   &trans                     &trans       &trans     &trans     &trans    &trans     &trans
-&kp GRAVE  &kp N1  &kp N2  &kp N3   &kp N4   &kp N5                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&kp F1     &kp F2  &kp F3  &kp F4   &kp F5   &kp F6                     &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&kp F7     &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
-                           &trans   &trans   &trans   &trans    &trans  &trans       &trans     &trans
+&trans  &trans         &trans    &trans      &trans   &trans                                  &trans       &trans     &trans     &trans    &trans     &trans
+&trans  &kp RA(GRAVE)  &e_grave  &e_aigue    &e_chap  &kp LS(RA(NUMBER_6))                    &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
+&trans  &a_grave       &trans    &trans      &trans   &trans                                  &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
+&trans  &trans         &trans    &c_cedille  &trans   &trans                &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
+                                 &trans      &trans   &trans                &trans    &trans  &trans       &trans     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
