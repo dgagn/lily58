@@ -68,12 +68,47 @@
             bindings = <&kp RA(COMMA) &kp C>;
             label = "C_CEDILLE";
         };
+
+        e_grave_cap: e_grave_cap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(GRAVE) &kp LS(E)>;
+            label = "E_GRAVE_CAP";
+        };
+
+        e_aigue_cap: e_aigue_cap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(SQT) &kp LS(E)>;
+            label = "E_AIGUE_CAP";
+        };
+
+        e_chap_cap: e_chap_cap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(LS(NUMBER_6)) &kp LS(E)>;
+            label = "E_CHAP_CAP";
+        };
+
+        a_grave_cap: a_grave_cap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(GRAVE) &kp LS(A)>;
+            label = "A_GRAVE_CAP";
+        };
+
+        c_cedille_cap: c_cedille_cap {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RA(COMMA) &kp LS(C)>;
+            label = "C_CEDILLE_CAP";
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        base {
             // ------------------------------------------------------------------------------------------------------------
             // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
             // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
@@ -81,13 +116,13 @@
             // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
-            display-name = "Base";
+            display-name = "base";
             bindings = <
 &kp ESC                  &kp N1        &kp N2           &kp N3            &kp N4             &kp N5                                &kp N6     &kp N7              &kp N8             &kp N9            &kp N0                &kp MINUS
 &kp TAB                  &kp Q         &kp W            &kp E             &kp R              &kp T                                 &kp Y      &kp U               &kp I              &kp O             &kp P                 &kp EQUAL
 &hmr_layer 2 UNDERSCORE  &HMR RCTRL A  &HMR LEFT_ALT S  &HMR LEFT_META D  &HMR LEFT_SHIFT F  &kp G                                 &kp H      &HMR RIGHT_SHIFT J  &HMR RIGHT_META K  &HMR RIGHT_ALT L  &HMR RCTRL SEMICOLON  &kp SQT
 &kp LSHFT                &kp Z         &kp X            &kp C             &kp V              &kp B      &kp LBKT         &kp RBKT  &kp N      &kp M               &kp COMMA          &kp DOT           &kp FSLH              &kp DOUBLE_QUOTES
-                                                        &bt BT_CLR        &bt BT_SEL 0       &kp SPACE  &kp BACKSPACE    &mo 1     &kp ENTER  &trans              &trans
+                                                        &trans            &trans             &kp SPACE  &kp BACKSPACE    &mo 1     &kp ENTER  &trans              &trans
             >;
         };
 
@@ -107,11 +142,9 @@
 &trans  &kp PERCENT       &kp HASH          &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp TILDE         &trans    &trans  &trans            &trans            &trans            &trans            &trans            &trans
                                             &trans                &trans                 &trans            &trans    &trans  &trans            &trans            &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        raise_layer {
+        accent {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -119,16 +152,25 @@
             // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
             //                     |      |      |      |        |  |       |      |       |       |
 
-            display-name = "Raise";
+            display-name = "accent";
             bindings = <
-&trans  &trans         &trans    &trans      &trans   &trans                                  &trans       &trans     &trans     &trans    &trans     &trans
-&trans  &kp RA(GRAVE)  &e_grave  &e_aigue    &e_chap  &kp LS(RA(NUMBER_6))                    &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&trans  &a_grave       &trans    &trans      &trans   &trans                                  &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&trans  &trans         &trans    &c_cedille  &trans   &trans                &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
-                                 &trans      &trans   &trans                &trans    &trans  &trans       &trans     &trans
+&trans  &trans         &trans    &trans      &trans          &trans                                  &trans      &trans          &trans        &trans        &trans        &trans
+&trans  &kp RA(GRAVE)  &e_grave  &e_aigue    &e_chap         &kp LS(RA(NUMBER_6))                    &trans      &trans          &trans        &trans        &trans        &trans
+&trans  &a_grave       &trans    &trans      &hmr_layer 3 F  &trans                                  &trans      &hmr_layer 3 J  &trans        &trans        &trans        &trans
+&mo 3   &trans         &trans    &c_cedille  &trans          &trans                &trans    &trans  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+                                 &trans      &trans          &trans                &trans    &trans  &trans      &trans          &trans
             >;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        ACCENT {
+            display-name = "ACCENT";
+            bindings = <
+&trans  &trans         &trans        &trans          &trans       &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp RA(GRAVE)  &e_grave_cap  &e_aigue_cap    &e_chap_cap  &kp LS(RA(NUMBER_6))                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &a_grave_cap   &trans        &trans          &trans       &trans                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &trans        &c_cedille_cap  &trans       &trans                &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                     &trans          &trans       &trans                &trans    &trans  &trans  &trans  &trans
+            >;
         };
     };
 };
