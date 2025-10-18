@@ -118,21 +118,21 @@
 
             display-name = "base";
             bindings = <
-&kp DOLLAR           &kp PLUS      &kp LEFT_BRACKET  &kp LEFT_BRACE     &kp LEFT_PARENTHESIS  &kp AMPERSAND                             &kp EQUAL  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE    &kp RIGHT_BRACKET  &kp ASTERISK          &kp EXCLAMATION
-&kp TAB              &kp Q         &kp W             &kp E              &kp R                 &kp T                                     &kp Y      &kp U                  &kp I              &kp O              &kp P                 &kp MINUS
-&hmr_layer 3 ESCAPE  &HMR RCTRL A  &HMR LEFT_ALT S   &HMR LEFT_META D   &HMR LEFT_SHIFT F     &kp G                                     &kp H      &HMR RIGHT_SHIFT J     &HMR RIGHT_META K  &HMR RIGHT_ALT L   &HMR RCTRL SEMICOLON  &kp SQT
-&kp LSHFT            &kp Z         &kp X             &kp C              &kp V                 &kp B          &kp LBKT         &kp RBKT  &kp N      &kp M                  &kp COMMA          &kp DOT            &kp FSLH              &kp RIGHT_SHIFT
-                                                     &kp DOUBLE_QUOTES  &kp AT_SIGN           &kp SPACE      &kp BACKSPACE    &mo 2     &kp ENTER  &kp NON_US_BACKSLASH   &kp PIPE
+&kp DOLLAR           &kp PLUS      &kp LEFT_BRACKET  &kp LEFT_BRACE    &kp LEFT_PARENTHESIS  &kp AMPERSAND                             &kp EQUAL  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE    &kp RIGHT_BRACKET  &kp ASTERISK          &kp EXCLAMATION
+&kp TAB              &kp Q         &kp W             &kp E             &kp R                 &kp T                                     &kp Y      &kp U                  &kp I              &kp O              &kp P                 &kp MINUS
+&hmr_layer 3 ESCAPE  &HMR RCTRL A  &HMR LEFT_ALT S   &HMR LEFT_META D  &HMR LEFT_SHIFT F     &kp G                                     &kp H      &HMR RIGHT_SHIFT J     &HMR RIGHT_META K  &HMR RIGHT_ALT L   &HMR RCTRL SEMICOLON  &kp SQT
+&mo 1                &kp Z         &kp X             &kp C             &kp V                 &kp B          &kp LBKT         &kp RBKT  &kp N      &kp M                  &kp COMMA          &kp DOT            &kp FSLH              &mo 1
+                                                     &trans            &kp AT_SIGN           &kp SPACE      &kp BACKSPACE    &mo 2     &kp ENTER  &kp NON_US_BACKSLASH   &kp PIPE
             >;
         };
 
-        layer_4 {
+        shift {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&kp TILDE   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5                       &kp NUMBER_6  &kp N7    &kp N8         &kp N9            &kp N0        &kp PERCENT
+&kp TAB     &kp LS(Q)     &kp LS(W)     &kp LS(E)     &kp LS(R)     &kp LS(T)                    &trans        &trans    &trans         &trans            &trans        &kp UNDERSCORE
+&kp ESCAPE  &trans        &trans        &trans        &trans        &trans                       &trans        &trans    &trans         &trans            &kp COLON     &kp DOUBLE_QUOTES
+&trans      &trans        &trans        &trans        &trans        &trans     &trans    &trans  &trans        &trans    &kp LESS_THAN  &kp GREATER_THAN  &kp QUESTION  &trans
+                                        &trans        &kp LCTRL     &trans     &trans    &trans  &trans        &kp HASH  &kp GRAVE
             >;
         };
 
